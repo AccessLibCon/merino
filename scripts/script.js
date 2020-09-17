@@ -41,8 +41,13 @@ function removeCards(first, second) {
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.card').forEach(function(card, index) {
     card.addEventListener('click', function(event) {
+      if(index == firstChoice){
+        return;
+      }
+
       clicks++;
       card.style.backgroundImage=`url(images/${deck[index]})`; 
+      
       if(clicks%2==0) {
         if(deck[firstChoice] == deck[index]) {
           setTimeout(removeCards(firstChoice, index),  1000);
