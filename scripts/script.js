@@ -19,44 +19,46 @@ if(top) while(--top) {
   deck[top] = tmp;
 }
 
-var clicks =  0;
-var firstChoice = null;
+var chosen = [];
 var score = 0;
+var clicks = 0;
 
 function resetCards() {
-  document.querySelectorAll('.card:not(.found)').forEach(function(card) {
-    card.style.backgroundImage=`url(images/access.png)`;
-
-  }) 
+  first = chosen.shift();
+  second = chosen.shift();
+  cards = document.querySelectorAll('.card');
+  cards[first].style.backgroundImage=`url(images/access.png)`;
+  cards[second].style.backgroundImage=`url(images/access.png)`;
 }
 
-function removeCards(first, second) {
+function removeCards() {
+  first = chosen.shift();
+  second = chosen.shift();
   cards = document.querySelectorAll('.card');
   cards[first].classList.add('found');
   cards[second].classList.add('found');
   document.querySelector('.score').innerHTML = `${++score} matches found in ${clicks/2} tries.`;
-  firstChoice = null;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.card').forEach(function(card, index) {
     card.addEventListener('click', function(event) {
-      if(index == firstChoice){
+      if(index == chosen[chosen.length-1]){
         return;
       }
 
-      clicks++;
+      chosen.unshift(index)
+      clicks++
+
       card.style.backgroundImage=`url(images/${deck[index]})`; 
       
-      if(clicks%2==0) {
-        if(deck[firstChoice] == deck[index]) {
-          setTimeout(removeCards(firstChoice, index),  1000);
+      if(chosen.length%2==0) {
+        if(deck[chosen[0]] == deck[chosen[1]]) {
+          setTimeout(removeCards,  1000);
         } else {
           setTimeout(resetCards,  1000);
         }
-      } else  {
-        firstChoice = index;
-      }
+      } 
     })
   })
 });
