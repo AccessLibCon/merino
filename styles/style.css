@@ -4,12 +4,15 @@
     grid-gap: 10px;
   }
   .card {
-    border: 1px solid black; 
+    background-image:
+      url("../images/access.png");
+      background-size: cover;
+    border: 1px solid darkblue; 
     border-radius: 10px; 
-    height: 200px;
+    height: 180px;
     width: 200px;
   }
-  img {
-    height: 100%;
-    width: 100%;
+
+  .found {
+    background-color: darkblue;
   }
