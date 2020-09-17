@@ -43,13 +43,12 @@ function removeCards() {
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.card').forEach(function(card, index) {
     card.addEventListener('click', function(event) {
-      if(index == chosen[chosen.length-1]){
+      if(chosen.includes(index)){
         return;
       }
 
-      chosen.unshift(index)
+      chosen.push(index)
       clicks++
-
       card.style.backgroundImage=`url(images/${deck[index]})`; 
       
       if(chosen.length%2==0) {
