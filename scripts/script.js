@@ -38,6 +38,13 @@ function removeCards() {
   cards[first].classList.add('found');
   cards[second].classList.add('found'); 
   document.querySelector('div.score > h1').innerHTML = `${++score} matches found in ${clicks/2} tries.`;
+
+  number_found = document.querySelectorAll('.found').length 
+  if( number_found == 18) {
+    player = window.prompt("Congratulation!  Please enter your name", "Access Conference 2020");
+    sessionStorage .setItem('player', player);
+    location = "highscore.html";
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
