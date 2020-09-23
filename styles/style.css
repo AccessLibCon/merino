@@ -7,12 +7,20 @@
     background-image:
       url("../images/access.png");
       background-size: cover;
-    border: 1px solid darkblue; 
+    border: 1px solid #008CBA; 
     border-radius: 10px; 
+    box-shadow: 0px 7px 10px #008CBA;
     height: 180px;
     width: 200px;
   }
 
   .found {
-    background-color: darkblue;
+    background-color: #008CBA;
   }
+
+  .score {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    text-align: center;
+  }
+   

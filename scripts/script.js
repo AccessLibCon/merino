@@ -36,8 +36,8 @@ function removeCards() {
   second = chosen.shift();
   cards = document.querySelectorAll('.card');
   cards[first].classList.add('found');
-  cards[second].classList.add('found');
-  document.querySelector('.score').innerHTML = `${++score} matches found in ${clicks/2} tries.`;
+  cards[second].classList.add('found'); 
+  document.querySelector('div.score > h1').innerHTML = `${++score} matches found in ${clicks/2} tries.`;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
