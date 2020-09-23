@@ -11,17 +11,19 @@ const images = [
 ]
 
 var deck = images.concat(images)
-var tmp, current, top = deck.length;
-if(top) while(--top) {
-  current = Math.floor( Math.random() * (top+1) );
-  tmp = deck[current];
-  deck[current] = deck[top];
-  deck[top] = tmp;
-}
-
 var chosen = [];
 var score = 0;
 var clicks = 0;
+
+function shuffle() {
+  var tmp, current, top = deck.length;
+  if(top) while(--top) {
+    current = Math.floor( Math.random() * (top+1) );
+    tmp = deck[current];
+    deck[current] = deck[top];
+    deck[top] = tmp;
+  }
+}
 
 function resetCards() {
   first = chosen.shift();
@@ -48,6 +50,7 @@ function removeCards() {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  shuffle();
   document.querySelectorAll('.card').forEach(function(card, index) {
     card.addEventListener('click', function(event) {
       if(chosen.includes(index)){
